@@ -1,46 +1,239 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Мой сайт-визитка</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Сайт с разделами и новостями</title>
+<style>
+  /* Сброс стилей и базовые */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+  }
+  
+  /* Основная сетка */
+  .wrapper {
+    display: flex;
+    height: 100vh;
+  }
+
+  /* Левая навигация */
+  nav {
+    width: 250px;
+    background: #2a2d45;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+    animation: slideInLeft 0.8s ease forwards;
+  }
+  nav h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #ffcc00;
+    text-shadow: 1px 1px 4px #000;
+  }
+  nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  nav a:hover, nav a.active {
+    background: #ffcc00;
+    color: #2a2d45;
+    box-shadow: 0 0 10px #ffcc00;
+  }
+
+  /* Основной контент */
+  main {
+    flex: 1;
+    background: #1f2233;
+    padding: 30px 40px;
+    overflow-y: auto;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+    text-shadow: 0 0 8px #ffcc00;
+  }
+
+  /* Новости */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .news-item {
+    background: #31345a;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #ffcc00aa;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUpFade 0.6s forwards;
+  }
+  .news-item:nth-child(1) { animation-delay: 0.2s; }
+  .news-item:nth-child(2) { animation-delay: 0.4s; }
+  .news-item:nth-child(3) { animation-delay: 0.6s; }
+  .news-item:nth-child(4) { animation-delay: 0.8s; }
+
+  .news-item h3 {
+    margin-top: 0;
+    color: #fff;
+  }
+  .news-item p {
+    line-height: 1.5;
+    color: #ddd;
+  }
+
+  /* Анимации */
+  @keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUpFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Адаптив */
+  @media (max-width: 768px) {
+    .wrapper {
+      flex-direction: column;
+    }
+    nav {
+      width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      padding: 10px 5px;
+      box-shadow: none;
+    }
+    nav a {
+      flex: 1 0 auto;
+      margin: 0 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+    }
+  }
+</style>
 </head>
 <body>
-  <!-- Прелоадер -->
-  <div id="preloader">
-    <div class="loader"></div>
+  <div class="wrapper">
+    <nav>
+      <h2>Разделы</h2>
+      <a href="#" class="active" onclick="showNews(0)">Главная</a>
+      <a href="#" onclick="showNews(1)">Технологии</a>
+      <a href="#" onclick="showNews(2)">Спорт</a>
+      <a href="#" onclick="showNews(3)">Культура</a>
+    </nav>
+    <main>
+      <h1 id="news-title">Главная</h1>
+      <div class="news-list" id="news-list">
+        <div class="news-item">
+          <h3>Добро пожаловать на сайт!</h3>
+          <p>Это пример сайта с левой навигацией и редактируемыми новостями. Кликайте по разделам слева, чтобы менять содержимое.</p>
+        </div>
+        <div class="news-item">
+          <h3>Новые возможности</h3>
+          <p>Мы добавили плавные анимации и яркий дизайн для приятного восприятия.</p>
+        </div>
+      </div>
+    </main>
   </div>
 
-  <!-- Основной контент сайта, изначально скрыт -->
-  <div class="container" style="opacity: 0;">
-    <img src="photo.jpg" alt="Моё фото" />
-    <h1>Привет! Я начинаю учиться веб-разработке</h1>
-    <p>Этот сайт я сделал своими руками. Буду рад связаться!</p>
+<script>
+  const newsData = [
+    [ // Главная
+      {
+        title: 'Добро пожаловать на сайт!',
+        text: 'Это пример сайта с левой навигацией и редактируемыми новостями. Кликайте по разделам слева, чтобы менять содержимое.'
+      },
+      {
+        title: 'Новые возможности',
+        text: 'Мы добавили плавные анимации и яркий дизайн для приятного восприятия.'
+      }
+    ],
+    [ // Технологии
+      {
+        title: 'Технологии 2025',
+        text: 'В этом году разработчики сосредоточились на AI, VR и новых веб-стандартах.'
+      },
+      {
+        title: 'JavaScript улучшения',
+        text: 'Новые функции языка помогут создавать ещё более быстрые и удобные сайты.'
+      }
+    ],
+    [ // Спорт
+      {
+        title: 'Чемпионат мира',
+        text: 'Сборная вашей страны готовится к мировому чемпионату с большим энтузиазмом.'
+      },
+      {
+        title: 'Новые рекорды',
+        text: 'Спортсмены продолжают удивлять новыми достижениями и результатами.'
+      }
+    ],
+    [ // Культура
+      {
+        title: 'Выставка искусств',
+        text: 'Современное искусство развивается очень динамично, приходите на выставку.'
+      },
+      {
+        title: 'Театральный сезон',
+        text: 'Новые постановки порадуют как любителей классики, так и современных жанров.'
+      }
+    ]
+  ];
 
-    <div class="buttons">
-      <a href="mailto:kuliankov2@gmail.com">Написать на Email</a>
-      <a href="https://t.me/chuvakqq" class="telegram" target="_blank">Написать в Telegram</a>
-    </div>
+  const navLinks = document.querySelectorAll('nav a');
+  const newsTitle = document.getElementById('news-title');
+  const newsList = document.getElementById('news-list');
 
-    <section class="about-me">
-      <h2>Обо мне</h2>
-      <p>Я учусь создавать красивые и удобные сайты. Этот процесс очень интересный и вдохновляющий!</p>
-    </section>
-  </div>
+  function showNews(index) {
+    // Снять активный класс со всех ссылок
+    navLinks.forEach(link => link.classList.remove('active'));
+    // Добавить активный класс на выбранный
+    navLinks[index].classList.add('active');
 
-  <!-- Скрипт для прелоадера -->
-  <script>
-    window.addEventListener('load', function() {
-      const preloader = document.getElementById('preloader');
-      const container = document.querySelector('.container');
+    // Обновить заголовок раздела
+    const sectionNames = ['Главная', 'Технологии', 'Спорт', 'Культура'];
+    newsTitle.textContent = sectionNames[index];
 
-      setTimeout(() => {
-        preloader.style.display = 'none';
-        container.style.opacity = '1';  // Показываем сайт плавно
-      }, 2000);
+    // Очистить новости
+    newsList.innerHTML = '';
+
+    // Добавить новости для выбранного раздела с анимацией
+    newsData[index].forEach((news, i) => {
+      const newsItem = document.createElement('div');
+      newsItem.className = 'news-item';
+      newsItem.style.animationDelay = `${0.2 + i * 0.2}s`;
+      newsItem.innerHTML = `<h3>${news.title}</h3><p>${news.text}</p>`;
+      newsList.appendChild(newsItem);
     });
-  </script>
+  }
+</script>
 </body>
 </html>
-
