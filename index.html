@@ -7,7 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <!-- Прелоадер -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Основной контент сайта, изначально скрыт -->
+  <div class="container" style="opacity: 0;">
     <img src="photo.jpg" alt="Моё фото" />
     <h1>Привет! Я начинаю учиться веб-разработке</h1>
     <p>Этот сайт я сделал своими руками. Буду рад связаться!</p>
@@ -22,5 +28,19 @@
       <p>Я учусь создавать красивые и удобные сайты. Этот процесс очень интересный и вдохновляющий!</p>
     </section>
   </div>
+
+  <!-- Скрипт для прелоадера -->
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      const container = document.querySelector('.container');
+
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        container.style.opacity = '1';  // Показываем сайт плавно
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
+
