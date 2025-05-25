@@ -1,0 +1,15 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: white;
+    color: black;
+}
+
+/* Медиа-запрос для экранов меньше 600px */
+@media (max-width: 600px) {
+    body {
+        background-color: #f0f0f0;
+        font-size: 18px;
+    }
+}
