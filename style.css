@@ -1,15 +1,78 @@
-/* Общие стили */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: white;
-    color: black;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0;
+    color: #333;
 }
 
-/* Медиа-запрос для экранов меньше 600px */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+.buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.buttons a.telegram {
+    background-color: #0088cc;
+}
+
+.buttons a:hover {
+    opacity: 0.9;
+}
+
 @media (max-width: 600px) {
     body {
         background-color: #f0f0f0;
         font-size: 18px;
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .buttons a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
     }
 }
