@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт-визитка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .buttons a.telegram {
+      background-color: #0088cc;
+    }
+
+    .buttons a:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 500px) {
+      .buttons a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="photo.jpg" alt="Моё фото">
+    <h1>Привет! Я начинаю учиться веб-разработке</h1>
+    <p>Этот сайт я сделал своими руками. Буду рад связаться!</p>
+
+    <div class="buttons">
+      <a href="mailto:kuliankov2@gmail.com">Написать на Email</a>
+      <a href="https://t.me/chuvakqq" class="telegram" target="_blank">Написать в Telegram</a>
+    </div>
+  </div>
+</body>
+</html>
