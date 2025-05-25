@@ -48,7 +48,9 @@ p {
 }
 
 .buttons a:hover {
-    opacity: 0.9;
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 @media (max-width: 600px) {
@@ -106,4 +108,24 @@ h1, p {
   animation: slideInLeft 1s ease forwards;
   animation-delay: 0.5s;
   opacity: 0; /* изначально скрыты */
+}
+.about-me {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9faff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  animation: slideInLeft 1s ease forwards;
+  opacity: 0;
+  animation-delay: 1s;
+}
+
+.about-me h2 {
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.about-me p {
+  font-size: 16px;
+  color: #444;
 }
