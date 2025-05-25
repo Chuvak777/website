@@ -76,3 +76,34 @@ p {
         width: 80%;
     }
 }
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+img {
+  animation: fadeInDown 1s ease forwards;
+}
+
+h1, p {
+  animation: slideInLeft 1s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0; /* изначально скрыты */
+}
