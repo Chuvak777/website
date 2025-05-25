@@ -1,239 +1,269 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Сайт с разделами и новостями</title>
-<style>
-  /* Сброс стилей и базовые */
-  * {
-    box-sizing: border-box;
-  }
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: #fff;
-  }
-  
-  /* Основная сетка */
-  .wrapper {
-    display: flex;
-    height: 100vh;
-  }
-
-  /* Левая навигация */
-  nav {
-    width: 250px;
-    background: #2a2d45;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
-    animation: slideInLeft 0.8s ease forwards;
-  }
-  nav h2 {
-    margin-bottom: 30px;
-    text-align: center;
-    letter-spacing: 2px;
-    color: #ffcc00;
-    text-shadow: 1px 1px 4px #000;
-  }
-  nav a {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 600;
-    margin: 10px 0;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  nav a:hover, nav a.active {
-    background: #ffcc00;
-    color: #2a2d45;
-    box-shadow: 0 0 10px #ffcc00;
-  }
-
-  /* Основной контент */
-  main {
-    flex: 1;
-    background: #1f2233;
-    padding: 30px 40px;
-    overflow-y: auto;
-    animation: fadeIn 1s ease forwards;
-  }
-
-  main h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffcc00;
-    text-shadow: 0 0 8px #ffcc00;
-  }
-
-  /* Новости */
-  .news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .news-item {
-    background: #31345a;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px #ffcc00aa;
-    transform: translateY(30px);
-    opacity: 0;
-    animation: slideUpFade 0.6s forwards;
-  }
-  .news-item:nth-child(1) { animation-delay: 0.2s; }
-  .news-item:nth-child(2) { animation-delay: 0.4s; }
-  .news-item:nth-child(3) { animation-delay: 0.6s; }
-  .news-item:nth-child(4) { animation-delay: 0.8s; }
-
-  .news-item h3 {
-    margin-top: 0;
-    color: #fff;
-  }
-  .news-item p {
-    line-height: 1.5;
-    color: #ddd;
-  }
-
-  /* Анимации */
-  @keyframes slideInLeft {
-    from { transform: translateX(-100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slideUpFade {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Помощник - Твой умный сайт</title>
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  }
-
-  /* Адаптив */
-  @media (max-width: 768px) {
-    .wrapper {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
     }
-    nav {
-      width: 100%;
-      flex-direction: row;
-      overflow-x: auto;
-      padding: 10px 5px;
-      box-shadow: none;
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      cursor: default;
     }
     nav a {
-      flex: 1 0 auto;
-      margin: 0 10px;
-      padding: 10px;
-      text-align: center;
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f0a500;
     }
     main {
-      padding: 20px;
+      flex: 1;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
     }
-  }
-</style>
+    .sidebar {
+      flex: 1 1 250px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 30px;
+      min-width: 220px;
+      animation: fadeInLeft 1s ease forwards;
+    }
+    .sidebar h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #f0a500;
+      padding-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .sidebar li:hover {
+      color: #f0a500;
+    }
+
+    .content {
+      flex: 2 1 600px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 30px;
+      animation: fadeInRight 1s ease forwards;
+      min-width: 300px;
+    }
+    .content h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #f0a500;
+      padding-bottom: 10px;
+    }
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .content textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 8px;
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      resize: vertical;
+      outline: none;
+      background: rgba(255,255,255,0.3);
+      color: #222;
+      font-family: inherit;
+      transition: background 0.3s;
+    }
+    .content textarea:focus {
+      background: white;
+    }
+    .content button {
+      background: #f0a500;
+      border: none;
+      padding: 12px 25px;
+      color: #222;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .content button:hover {
+      background: #cf8500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    /* Анимации */
+    @keyframes fadeInLeft {
+      from {opacity: 0; transform: translateX(-50px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+    @keyframes fadeInRight {
+      from {opacity: 0; transform: translateX(50px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    /* Адаптив */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        padding: 30px 20px;
+      }
+      .sidebar, .content {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="wrapper">
+
+  <header>
+    <h1>AI Помощник</h1>
     <nav>
-      <h2>Разделы</h2>
-      <a href="#" class="active" onclick="showNews(0)">Главная</a>
-      <a href="#" onclick="showNews(1)">Технологии</a>
-      <a href="#" onclick="showNews(2)">Спорт</a>
-      <a href="#" onclick="showNews(3)">Культура</a>
+      <a href="#home" onclick="showSection('home')">Главная</a>
+      <a href="#features" onclick="showSection('features')">Функции</a>
+      <a href="#about" onclick="showSection('about')">О нас</a>
+      <a href="#contact" onclick="showSection('contact')">Контакты</a>
     </nav>
-    <main>
-      <h1 id="news-title">Главная</h1>
-      <div class="news-list" id="news-list">
-        <div class="news-item">
-          <h3>Добро пожаловать на сайт!</h3>
-          <p>Это пример сайта с левой навигацией и редактируемыми новостями. Кликайте по разделам слева, чтобы менять содержимое.</p>
-        </div>
-        <div class="news-item">
-          <h3>Новые возможности</h3>
-          <p>Мы добавили плавные анимации и яркий дизайн для приятного восприятия.</p>
-        </div>
-      </div>
-    </main>
-  </div>
+  </header>
 
-<script>
-  const newsData = [
-    [ // Главная
-      {
-        title: 'Добро пожаловать на сайт!',
-        text: 'Это пример сайта с левой навигацией и редактируемыми новостями. Кликайте по разделам слева, чтобы менять содержимое.'
+  <main>
+    <aside class="sidebar">
+      <h2>Разделы</h2>
+      <ul>
+        <li onclick="showSection('home')">Главная</li>
+        <li onclick="showSection('features')">Функции</li>
+        <li onclick="showSection('about')">О нас</li>
+        <li onclick="showSection('contact')">Контакты</li>
+      </ul>
+    </aside>
+
+    <section class="content" id="content-area">
+      <!-- Здесь меняется содержимое -->
+      <h2>Добро пожаловать!</h2>
+      <p>Этот сайт сделан для демонстрации простого AI помощника с возможностью менять текст.</p>
+      <textarea id="editable-text" rows="6">Редактируй этот текст прямо здесь...</textarea>
+      <br /><br />
+      <button onclick="saveText()">Сохранить изменения</button>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 AI Помощник. Все права защищены.
+  </footer>
+
+  <script>
+    const sections = {
+      home: {
+        title: "Добро пожаловать!",
+        content: "Этот сайт сделан для демонстрации простого AI помощника с возможностью менять текст.",
+        editable: true
       },
-      {
-        title: 'Новые возможности',
-        text: 'Мы добавили плавные анимации и яркий дизайн для приятного восприятия.'
-      }
-    ],
-    [ // Технологии
-      {
-        title: 'Технологии 2025',
-        text: 'В этом году разработчики сосредоточились на AI, VR и новых веб-стандартах.'
+      features: {
+        title: "Наши функции",
+        content: "Здесь можно добавить описание возможностей вашего AI помощника. Например: генерация текста, автоматизация задач, помощь в обучении и многое другое.",
+        editable: true
       },
-      {
-        title: 'JavaScript улучшения',
-        text: 'Новые функции языка помогут создавать ещё более быстрые и удобные сайты.'
-      }
-    ],
-    [ // Спорт
-      {
-        title: 'Чемпионат мира',
-        text: 'Сборная вашей страны готовится к мировому чемпионату с большим энтузиазмом.'
+      about: {
+        title: "О нас",
+        content: "Мы команда энтузиастов, создающих удобные и современные решения с использованием искусственного интеллекта.",
+        editable: true
       },
-      {
-        title: 'Новые рекорды',
-        text: 'Спортсмены продолжают удивлять новыми достижениями и результатами.'
+      contact: {
+        title: "Контакты",
+        content: "Свяжитесь с нами по email: info@aihelper.ru или через социальные сети.",
+        editable: true
       }
-    ],
-    [ // Культура
-      {
-        title: 'Выставка искусств',
-        text: 'Современное искусство развивается очень динамично, приходите на выставку.'
-      },
-      {
-        title: 'Театральный сезон',
-        text: 'Новые постановки порадуют как любителей классики, так и современных жанров.'
+    };
+
+    const contentArea = document.getElementById('content-area');
+    const editableText = document.getElementById('editable-text');
+
+    function showSection(name) {
+      const section = sections[name];
+      if (!section) return;
+
+      contentArea.innerHTML = `
+        <h2>${section.title}</h2>
+        <p>${section.content}</p>
+        ${section.editable ? `<textarea id="editable-text" rows="6">${section.content}</textarea>
+          <br /><br />
+          <button onclick="saveText()">Сохранить изменения</button>` : ''}
+      `;
+
+      // Нужно заново получить textarea после замены innerHTML
+      if(section.editable) {
+        editableText = document.getElementById('editable-text');
       }
-    ]
-  ];
+    }
 
-  const navLinks = document.querySelectorAll('nav a');
-  const newsTitle = document.getElementById('news-title');
-  const newsList = document.getElementById('news-list');
+    function saveText() {
+      const currentTitle = contentArea.querySelector('h2').textContent;
+      const newText = document.getElementById('editable-text').value;
 
-  function showNews(index) {
-    // Снять активный класс со всех ссылок
-    navLinks.forEach(link => link.classList.remove('active'));
-    // Добавить активный класс на выбранный
-    navLinks[index].classList.add('active');
+      // Обновляем контент в объекте
+      for(let key in sections) {
+        if(sections[key].title === currentTitle) {
+          sections[key].content = newText;
+          alert('Изменения сохранены!');
+          break;
+        }
+      }
 
-    // Обновить заголовок раздела
-    const sectionNames = ['Главная', 'Технологии', 'Спорт', 'Культура'];
-    newsTitle.textContent = sectionNames[index];
+      // Обновляем отображение параграфа под textarea
+      showSection(Object.keys(sections).find(k => sections[k].title === currentTitle));
+    }
 
-    // Очистить новости
-    newsList.innerHTML = '';
+    // Показать главную секцию по умолчанию
+    showSection('home');
+  </script>
 
-    // Добавить новости для выбранного раздела с анимацией
-    newsData[index].forEach((news, i) => {
-      const newsItem = document.createElement('div');
-      newsItem.className = 'news-item';
-      newsItem.style.animationDelay = `${0.2 + i * 0.2}s`;
-      newsItem.innerHTML = `<h3>${news.title}</h3><p>${news.text}</p>`;
-      newsList.appendChild(newsItem);
-    });
-  }
-</script>
 </body>
 </html>
